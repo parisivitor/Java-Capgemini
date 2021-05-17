@@ -38,9 +38,9 @@ public class Anuncio implements Serializable {
 			visualizacao = shares * 40;
 			totalViews += visualizacao;
 		}
-		this.views = totalViews;
-		this.clicks = totalClicks;
-		this.shares = totalShare;
+		this.views = totalViews * this.numeroDias;
+		this.clicks = totalClicks* this.numeroDias;
+		this.shares = totalShare* this.numeroDias;
 	}
 
 	public String getNomeAnuncio() {

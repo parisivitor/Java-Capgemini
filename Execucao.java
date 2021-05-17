@@ -36,14 +36,16 @@ public class Execucao {
 			System.out.println("|------------------------------------------------------|");
 			System.out.println("|------------ 1 -> Cadastrar novo anuncio -------------|");
 			System.out.println("|------------ 2 -> Buscar anuncio ---------------------|");
-			System.out.println("|------------ 9 -> Sair -------------------------------|");
+			System.out.println("|------------ 9 -> Salvar e Sair ----------------------|");
 			System.out.println("|------------------------------------------------------|");
 			System.out.println("+------------------Digite 1, 2 ou 9! ------------------+");
 			Scanner s = new Scanner(System.in);
 			op = s.nextInt();
-			if (op == 1)
+			if (op == 1) {
 				anuncio.add(cadastro());
 //				anuncio.forEach(a -> System.out.println(a));
+			}
+				
 
 			if (op == 2)
 				busca(anuncio);
@@ -61,6 +63,7 @@ public class Execucao {
 		Scanner d = new Scanner(System.in);
 		Scanner m = new Scanner(System.in);
 		Scanner a = new Scanner(System.in);
+		int dia,mes,ano;
 
 		System.out.println("+------------------------------------------------------+");
 		System.out.println("|------------------Cadastro de Anuncios----------------|");
@@ -74,22 +77,28 @@ public class Execucao {
 		cliente = new Cliente(s.next());
 
 		System.out.println("|Digite a data de inicio:");
-		System.out.println("|Dia (ex->05): ");
+		System.out.println("|Dia: ");
 		d = new Scanner(System.in);
-		System.out.println("|Mes (ex->12): ");
+		dia=d.nextInt();
+		System.out.println("|Mes: ");
 		m = new Scanner(System.in);
-		System.out.println("|Ano (ex->2021): ");
+		mes=m.nextInt();
+		System.out.println("|Ano: ");
 		a = new Scanner(System.in);
-		dataInicio.set(a.nextInt(), m.nextInt() - 1, d.nextInt());
+		ano=a.nextInt();
+		dataInicio.set(ano, mes - 1, dia);
 
 		System.out.println("|Digite a data de termino: ");
 		System.out.println("|Dia: ");
 		d = new Scanner(System.in);
+		dia=d.nextInt();
 		System.out.println("|Mes: ");
 		m = new Scanner(System.in);
+		mes=m.nextInt();
 		System.out.println("|Ano: ");
 		a = new Scanner(System.in);
-		dataTermino.set(a.nextInt(), m.nextInt() - 1, d.nextInt());
+		ano=a.nextInt();
+		dataTermino.set(ano, mes - 1, dia);
 
 		System.out.println("|Digite o valor do investimento diario: ");
 		s = new Scanner(System.in);
@@ -195,8 +204,11 @@ public class Execucao {
 			try {
 				String dataInicioFormatada = format_.format(a.getDataInicio().getTime());
 				String dataFimFormatada = format_.format(a.getDataTermino().getTime());
-				bw.write(a.getNomeAnuncio() + ";" + a.getCliente().getNome() + ";" + dataInicioFormatada + ";"
-						+ dataFimFormatada + ";" + a.getInvestimentoPorDia());
+				bw.write(a.getNomeAnuncio() + ";" 
+						+ a.getCliente().getNome() + ";" 
+						+ dataInicioFormatada + ";"
+						+ dataFimFormatada + ";" 
+						+ a.getInvestimentoPorDia());
 				bw.newLine();
 				bw.flush();
 			} catch (IOException e) {
