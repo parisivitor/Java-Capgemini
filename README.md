@@ -1,7 +1,6 @@
 # Imformações
 Autor: Vitor Risso Parisi
 email: parisivitor95@gmail.com 
-git do projeto: https://github.com/parisivitor/capgemini.git
 
 # Instruções:
 Adicionar as os arquivos.java em sua IDE de preferencia com java SE > 13;
